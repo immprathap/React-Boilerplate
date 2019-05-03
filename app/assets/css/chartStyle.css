@@ -1,0 +1,18 @@
+.pie-running-task {
+    stroke: #6e9cfa
+}
+.pie-suceeded-task {
+    stroke: #b5da54
+}
+.pie-failed-task {
+    stroke: #f5584b
+}
+.pie-defered-task {
+    stroke: #ffe076
+}
+
+.ct-chart-donut .ct-label {
+    fill: darkslategray;
+    font-size: 11px;
+    font-weight: bold;
+  }

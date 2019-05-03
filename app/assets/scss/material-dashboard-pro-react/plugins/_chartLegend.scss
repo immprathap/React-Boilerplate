@@ -1,0 +1,64 @@
+$ct-series-colors1: (
+    #83d342,
+    #b2b2b2,
+    #f7b84d,
+    #dda458,
+    #d17905,
+    #453d3f,
+    #0544d3,
+    #6b0392,
+    #f05b4f,
+    #86797d,
+    #b2c326,
+    #6188e2,
+    #a748ca,
+    #f44336,
+    
+) !default;
+
+.ct-chart {
+    display: flex;
+}
+.ct-legend {
+    position: relative;
+    z-index: 10;
+    li {
+        position: relative;
+        padding-left: 23px;
+        margin-bottom: 2px;
+        list-style: none;
+        font-size: 10px;
+        line-height: 10px;
+        cursor: pointer;
+    }
+
+    li:before {
+        width: 4px;
+        height: 4px;
+        position: absolute;
+        left: 0;
+        content: '';
+        border: 2px solid transparent;
+        border-radius: 2px;
+    }
+
+    li.inactive:before {
+        background: transparent;
+    }
+
+    &.ct-legend-inside {
+        padding: 0;
+        margin: auto 0 !important;
+        height: 50px;
+        /*position: absolute;
+        top: 0;
+        right: 0;*/
+    }
+    
+    @for $i from 0 to length($ct-series-colors1) {
+        .ct-series-#{$i}:before {
+            background-color: nth($ct-series-colors1, $i + 1);
+            border-color: nth($ct-series-colors1, $i + 1);
+        }
+    }
+}
