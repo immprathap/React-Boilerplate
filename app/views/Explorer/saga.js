@@ -1,34 +1,30 @@
-import { call, put, select, takeLatest } from 'redux-saga/effects';
-import { SELECT_TCGROUPS_REQUEST, API_ROUTE } from './constants';
-import { API_Server } from 'constants/index.js';
-import { tcGroupsSuccess, tcGroupsError } from './actions';
-
+import { call, put, takeLatest } from 'redux-saga/effects';
+import { apiServer } from 'constants/index.js';
 import request from 'utils/request';
-import { makeSelectUsername } from './selectors';
-
-function* InitRequest(requestURL) {
-  const response = yield call(request, requestURL);
-  return response;
-}
+import { SELECT_TCGROUPS_REQUEST } from './constants';
+import { tcGroupsSuccess, tcGroupsError } from './actions';
 
 /**
  * Thinclient and Thinclient groups request/response handler
  */
 export function* getGroups() {
-  const groupListURL = `${API_Server}tcservices/distinct/`;
-  const tcListURL = `${API_Server}tcservices/groups/`;
+  const groupListURL = `${apiServer}tcservices/distinct/`;
+  const tcListURL = `${apiServer}tcservices/groups/`;
   try {
     // Call our request helper (see 'utils/request')
     // const response = ["group1","group2","group3","group4"];
-    let tcListByGroups = {};
+    const tcListByGroups = {};
     const groupListResponse = yield call(request, groupListURL);
-    /*groupListResponse.map((group)=>{
+    /* groupListResponse.map((group)=>{
     console.log("Reached");
     const tcListResponse = InitRequest(requestURL+group);
       tcListByGroups[group] = tcListResponse;
-    });*/
-    for (let i=0;i<groupListResponse.length;i++) {
-      const tcListResponse = yield call(request, tcListURL+groupListResponse[i]);
+    }); */
+    for (let i = 0; i < groupListResponse.length; i += 1) {
+      const tcListResponse = yield call(
+        request,
+        tcListURL + groupListResponse[i],
+      );
       tcListByGroups[groupListResponse[i]] = tcListResponse;
     }
     yield put(tcGroupsSuccess(tcListByGroups));
@@ -38,14 +34,14 @@ export function* getGroups() {
 }
 
 export function* getAllTcs() {
-  const tcListURL = `${API_Server}tcservices/`;
+  const tcListURL = `${apiServer}tcservices/`;
   try {
-    let tcListByGroups = {};
+    const tcListByGroups = {};
     const tcListResponse = yield call(request, tcListURL);
-    let tcAttributes = Object.keys(tcListResponse[0]);
-    tcListByGroups["Default"] = tcListResponse.map((tc)=>{
-      let tempTc=[]
-      for (let i=0;i<tcAttributes.length;i++) {
+    const tcAttributes = Object.keys(tcListResponse[0]);
+    tcListByGroups.Default = tcListResponse.map(tc => {
+      const tempTc = [];
+      for (let i = 0; i < tcAttributes.length; i += 1) {
         tempTc.push(tc[tcAttributes[i]]);
       }
       return tempTc;
@@ -56,7 +52,6 @@ export function* getAllTcs() {
   }
 }
 
-
 /**
  * Root saga manages watcher lifecycle
  */
@@ -65,5 +60,5 @@ export default function* explorerSaga() {
   // By using `takeLatest` only the result of the latest API call is applied.
   // It returns task descriptor (just like fork) so we can continue execution
   // It will be cancelled automatically on component unmount
-  yield takeLatest(SELECT_TCGROUPS_REQUEST, getAllTcs);
+  yield takeLatest(SELECT_TCGROUPS_REQUEST, getGroups);
 }

@@ -291,9 +291,7 @@ class Explorer extends React.Component {
 
   render() {
     const { classes, isLoading, isTcByGroupFetched, tcListByGroups } = this.props;
-    const { dtBusy } = this.state;
     let tcListByGroupsAsJS = tcListByGroups.toJS();
-    console.log("dtBusy", dtBusy);
     const loading = (
       <LinearProgress color="secondary" />
     );
@@ -322,82 +320,6 @@ class Explorer extends React.Component {
     );
 
     var tabContent = [];
-
-    const columns = [
-      {
-       name: "_id",
-       label: "Serial number",
-       options: {
-        filter: false,
-        sort: false,
-       }
-      },
-      {
-       name: "name",
-       label: "Name",
-       options: {
-        filter: false,
-        sort: true,
-       }
-      },
-      {
-       name: "mac",
-       label: "MAC",
-       options: {
-        filter: false,
-        sort: false,
-       }
-      },
-      {
-       name: "state",
-       label: "State",
-       options: {
-        filterType: 'multiselect',
-        filter: true,
-        sort: true,
-       }
-      },
-     ];
-
-    const data = [
-      ["Joe James", "Test Corp", "Yonkers", "NY"],
-      ["John Walsh", "Test Corp", "Hartford", "CT"],
-      ["Bob Herm", "Test Corp", "Tampa", "FL"],
-      ["James Houston", "Test Corp", "Dallas", "TX"],
-    ];
-
-    const options = {
-      fizedHeader: true,
-      filterType: 'checkbox',
-      rowsPerPageOptions:[100,500,1000],
-      selectableRows:"none"/*,
-      onSearchChange: () => {
-        this.setState({dtBusy:true})
-      },
-      onTableChange: (action, tableState) => {
-        this.setState({dtBusy:false})
-      }*/
-    };
-
-    const temprender = (
-      <div>
-        <TextField
-          id="standard-name"
-          label="Search"
-          value={this.state.searchText}
-          onChange={this.handleChange('searchText')}
-          margin="normal"
-        />
-      <Button>Filter</Button>
-      {/*<MUIDataTable
-        title={"Default Group"}
-        data={tcListByGroupsAsJS.Default}
-        columns={columns}
-        options={options}
-        responsive='scroll'
-      />*/}
-      </div>
-    );
 
     if (isTcByGroupFetched) {
       tabContent.push(
@@ -787,7 +709,7 @@ class Explorer extends React.Component {
       </div>
     ) : null;
     return (
-      isLoading ? loading : temprender //explorerContent
+      isLoading ? loading : explorerContent
     );
   }
 }
