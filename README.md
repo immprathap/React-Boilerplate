@@ -1,5 +1,6 @@
+<span align="center">
 <img src="https://secureservercdn.net/198.71.190.232/z9g.9e3.myftpupload.com/wp-content/uploads/2019/02/snap-vdi-tc.png" alt="react boilerplate banner" align="center" />
-
+</span>
 <br />
 
 <div align="center"><strong>SnapVDI client Manager</strong></div>
@@ -7,7 +8,7 @@
 
 <br />
 
-<div align="center">
+<span align="center">
   <!-- Dependency Status -->
   <a href="https://david-dm.org/react-boilerplate/react-boilerplate">
     <img src="https://david-dm.org/react-boilerplate/react-boilerplate.svg" alt="Dependency Status" />
@@ -26,7 +27,7 @@
   </a>
 </a>
 
-</div>
+</span>
 
 ## Quick start
 
