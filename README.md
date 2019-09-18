@@ -1,13 +1,10 @@
 <span align="center">
-<img src="https://secureservercdn.net/198.71.190.232/z9g.9e3.myftpupload.com/wp-content/uploads/2019/02/snap-vdi-tc.png" alt="react boilerplate banner" align="center" />
+  <img src="https://secureservercdn.net/198.71.190.232/z9g.9e3.myftpupload.com/wp-content/uploads/2019/02/snap-vdi-tc.png" alt="react boilerplate banner" align="center" />
+  <br />
+  <h4 align="center">SnapVDI client Manager</h4>
+  <h6 align="center">SCM</h6>
 </span>
 <br />
-
-<div align="center"><strong>SnapVDI client Manager</strong></div>
-<div align="center">SCM enterprise client management interface</div>
-
-<br />
-
 <span align="center">
   <!-- Dependency Status -->
   <a href="https://david-dm.org/react-boilerplate/react-boilerplate">
