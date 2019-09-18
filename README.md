@@ -1,9 +1,9 @@
-<span align="center">
+<div>
   <img src="https://secureservercdn.net/198.71.190.232/z9g.9e3.myftpupload.com/wp-content/uploads/2019/02/snap-vdi-tc.png" alt="react boilerplate banner" align="center" />
   <br />
   <h4 align="center">SnapVDI client Manager</h4>
   <h6 align="center">SCM</h6>
-</span>
+</div>
 <br />
 <span align="center">
   <!-- Dependency Status -->
